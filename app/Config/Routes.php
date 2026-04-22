@@ -10,6 +10,7 @@ $routes->get('/cabanas', 'Cabana::index');
 $routes->get('reservar/(:any)', 'Reserva::crear/$1');
 $routes->post('reservar/guardar', 'Reserva::guardar');
 $routes->get('reservas', 'Reserva::misReservas');
+$routes->get('mis-reservas', 'Reserva::misReservas');
 $routes->get('login', 'Auth::login');
 $routes->post('login', 'Auth::loginPost');
 $routes->get('logout', 'Auth::logout');

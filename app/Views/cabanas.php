@@ -28,10 +28,21 @@
                     $<?= $cabana['precio'] ?> / noche
                 </p>
 
-                <a href="<?= site_url('reservar/' . $cabana['id']) ?>" 
-                   class="btn btn-success w-100 mt-2">
-                   Reservar
-                </a>
+               <?php if (session()->get('usuario_id')): ?>
+
+    <a href="<?= site_url('reservar/' . $cabana['id']) ?>" 
+       class="btn btn-success w-100 mt-2">
+       Reservar
+    </a>
+
+<?php else: ?>
+
+    <a href="<?= site_url('login') ?>" 
+       class="btn btn-secondary w-100 mt-2">
+       🔐 Iniciar sesión para reservar
+    </a>
+
+<?php endif; ?>
 
             </div>
         </div>

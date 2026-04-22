@@ -65,10 +65,17 @@ class Reserva extends BaseController
 }
 
     public function misReservas()
-    {
-        $model = new ReservaModel();
-        $data['reservas'] = $model->findAll();
-
-        return view('mis_reservas', $data);
+{
+    if (!session()->get('usuario_id')) {
+        return redirect()->to('login');
     }
+
+    $model = new ReservaModel();
+
+    $data['reservas'] = $model
+        ->where('usuario_id', session()->get('usuario_id'))
+        ->findAll();
+
+    return view('mis_reservas', $data);
+}
 }
